@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>Rendement Locatif</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1 class="text-center mb-3">Calculateur Rendement Locatif</h1>
+
+    <div class="mb-3">
+      <h5 class="text-center">Ce site à pour objectif d'aider à calculer le rendement d'un bien immobilier mis à la
+        location</h5>
+    </div>
+
+    <div id="entries" class="row entries">
+      <div class="col-md-8 mb-3">
+        <!-- COSTS -->
+        <form id="costs">
+          <h3 class="mb-3">Dépenses</h3>
+          <div class="mb-3">
+            <label>Prix d'Achat <span class="text-muted">(Inclus Frais d'agence)</span></label>
+            <div class="input-group">
+              <input id="price" type="number" class="form-control">
+              <div class="input-group-append">
+                <span class="input-group-text">€</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-row mb-3">
+            <div class="col-md-8">
+              <label>Frais de Notaire</label>
+              <div class="input-group">
+                <input id="broker" type="number" class="form-control">
+                <div class="input-group-append">
+                  <span class="input-group-text">€</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label>Soit</label>
+              <div class="input-group">
+                <input id="broker-percent" type="number" class="form-control" readonly>
+                <div class="input-group-append">
+                  <span class="input-group-text">%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row mb-3">
+            <div class="col-md-8">
+              <label>Intérêts</label>
+              <div class="input-group">
+                <input id="interests" type="number" class="form-control">
+                <div class="input-group-append">
+                  <span class="input-group-text">€</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label>Soit</label>
+              <div class="input-group">
+                <input id="interests-percent" type="number" class="form-control" readonly>
+                <div class="input-group-append">
+                  <span class="input-group-text">%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row mb-3">
+            <div class="col">
+              <label>Charges Annuelles</label>
+              <div class="input-group">
+                <input id="annual-costs" type="number" class="form-control">
+                <div class="input-group-append">
+                  <span class="input-group-text">€</span>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <label>Impôt Foncier</label>
+              <div class="input-group">
+                <input id="annual-taxes" type="number" class="form-control">
+                <div class="input-group-append">
+                  <span class="input-group-text">€</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row mb-3">
+            <div class="col-md-6">
+              <label>Impôts Revenus Locatifs</label>
+              <div class="input-group">
+                <select id="rent-taxes" class="form-control">
+                  <option value="0">0</option>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                </select>
+                <div class="input-group-append">
+                  <span class="input-group-text">%</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label>Soit <span class="text-muted">(Déduit du Loyer Annuel)</span></label>
+              <div class="input-group">
+                <input id="rent-taxes-annual" type="number" class="form-control" readonly>
+                <div class="input-group-append">
+                  <span class="input-group-text">€</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <!-- REVENUES -->
+        <form id="revenues">
+          <h3 class="mb-3">Recettes</h3>
+          <div class="form-row mb-3">
+            <div class="col-md-8">
+              <label>Loyer Mensuel <span class="text-muted">(Hors Charges)</span></label>
+              <div class="input-group">
+                <input id="rent" type="number" class="form-control">
+                <div class="input-group-append">
+                  <span class="input-group-text">€</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label>Soit Annuel</label>
+              <div class="input-group">
+                <input id="rent-annual" type="number" class="form-control" readonly>
+                <div class="input-group-append">
+                  <span class="input-group-text">€</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row mb-3">
+            <div class="col-md-8">
+              <label>Charges Loyer</label>
+              <div class="input-group">
+                <input id="rent-charges" type="number" class="form-control">
+                <div class="input-group-append">
+                  <span class="input-group-text">€</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label>Soit Annuel</label>
+              <div class="input-group">
+                <input id="rent-charges-annual" type="number" class="form-control" readonly>
+                <div class="input-group-append">
+                  <span class="input-group-text">€</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <h3>Récapitulatif</h3>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between">
+            <h6 class="my-0">Dépenses <span class="text-muted">(€)</span></h6>
+            <span id="total-costs" class="text-muted"></span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <h6 class="my-0">Recettes <span class="text-muted">(€)</h6>
+            <span id="total-revenues" class="text-muted"></span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <h6 class="my-0">Rendement <span class="text-muted">(%)</h6>
+            <span id="roi" class="text-muted"></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>

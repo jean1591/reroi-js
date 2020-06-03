@@ -19,6 +19,7 @@ const totalRevenuesEl = document.getElementById("total-revenues");
 
 // ROI
 const roiEL = document.getElementById("roi");
+const roiGrossEL = document.getElementById("roi-gross");
 
 const updateRentTaxes = () => {
 	if (rentEl.value) {
@@ -30,6 +31,13 @@ const updateROI = () => {
 	if (totalCostsEl.innerText !== 0 && totalRevenuesEl.innerText !== 0) {
 		const result = (+totalRevenuesEl.innerText / +totalCostsEl.innerText * 100).toFixed(2);
 		roi.innerText = result;
+	}
+};
+
+const updateGrossROI = () => {
+	if (totalCostsEl.innerText !== 0 && totalRevenuesEl.innerText !== 0) {
+		const result = (+totalRevenuesEl.innerText / +priceEl.value * 100).toFixed(2);
+		roiGrossEL.innerText = result;
 	}
 };
 
@@ -48,6 +56,7 @@ const updateTotalCosts = () => {
 	totalCostsEl.innerText = result;
 
 	updateROI();
+	updateGrossROI();
 };
 
 const updateTotalRevenues = () => {
@@ -55,6 +64,7 @@ const updateTotalRevenues = () => {
 	totalRevenuesEl.innerText = result;
 
 	updateROI();
+	updateGrossROI();
 };
 
 // EVENT LISTENERS
